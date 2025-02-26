@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _username,
               decoration: InputDecoration(
-                hintText: "Username",
+                hintText: "Usernames",
                 filled: true,
                 fillColor:
                     isError

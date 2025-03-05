@@ -1,3 +1,4 @@
+import 'package:asisten_tpm_3/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -26,19 +27,17 @@ class _LoginPageState extends State<LoginPage> {
               decoration: InputDecoration(
                 hintText: "Usernames",
                 filled: true,
-                fillColor:
-                    isError
-                        ? const Color.fromARGB(255, 255, 188, 182)
-                        : Colors.white,
+                fillColor: isError ? Colors.red.shade100 : Colors.transparent,
               ),
             ),
+            const SizedBox(height: 12),
             TextField(
               controller: _password,
               obscureText: true,
               decoration: InputDecoration(
                 hintText: "Password",
                 filled: true,
-                fillColor: isError ? Colors.pink : Colors.greenAccent,
+                fillColor: isError ? Colors.red.shade100 : Colors.transparent,
               ),
             ),
             SizedBox(height: 12),
@@ -48,8 +47,11 @@ class _LoginPageState extends State<LoginPage> {
                   setState(() {
                     isError = false;
                   });
-                  _username.text = "";
-                  _password.text = "";
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(username: _username.text),
+                    ),
+                  );
                 } else {
                   setState(() {
                     isError = true;
